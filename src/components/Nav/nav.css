@@ -1,0 +1,92 @@
+nav{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    
+}
+nav ul a{
+    cursor: pointer;
+}
+a:hover{
+color: rgb(217, 226, 226);
+border-bottom: 2px solid white;
+}
+.active{
+
+color: rgb(82, 85, 85);
+border-bottom: 2px solid linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
+}
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: rgb(220, 214, 214);
+    list-style: none;
+    font-size: 20px;
+}
+nav h1 {
+    font-size: 30px;
+    background: linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
+    background-clip: text;
+    color: transparent; 
+    cursor: pointer;
+}
+.hamburger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+gap: 8px;
+display: none;
+}
+.ham{
+    width: 40px ;
+    height: 2px ;
+     background: linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
+         transition: all 0.5s ease-in-out;
+
+}
+.mobilemenu{
+ position: absolute;
+ top: 80px;
+ width: 100%;
+ height: 100vh;
+right: 0;
+transform: translateX(100%);
+flex-direction: column;
+transition: all 0.5s ease-in-out;
+background-color: rgba(0, 0, 0, 0.353);
+backdrop-filter: blur(7px);
+gap: 40px;
+
+}
+.activemobile{
+    transform: translateX(0%);
+}
+.activeham .ham:nth-child(1){
+    transform: rotate(45deg) ;
+    position: relative;
+    top: 8px;
+}
+.activeham .ham:nth-child(2){
+    opacity: 0;
+}
+.activeham .ham:nth-child(3){
+    transform: rotate(-45deg) ;
+    position: relative;
+    top: -12px;
+}
+    @media (max-width: 768px) {
+        .desktopmenu{
+            display: none;
+        }
+        .hamburger{
+            display: flex;
+        }
+    }
