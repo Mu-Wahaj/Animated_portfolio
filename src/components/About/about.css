@@ -1,5 +1,334 @@
-#about{
+:root {
+    --primary-color: rgb(69, 193, 215);
+    --text-color: rgb(220, 214, 214);
+    --gradient: linear-gradient(135deg, var(--primary-color), rgb(218, 218, 218));
+    --nav-height: 80px;
+}
+
+#about {
     width: 100%;
-    height: 100%;
     min-height: 100vh;
+    display: flex;
+    padding-top: var(--nav-height);
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(10, 10, 30, 0.98));
+    position: relative;
+    overflow: hidden;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(69, 193, 215, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.leftabout {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding: 60px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.circle-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    padding-top: 40px;
+}
+
+.circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--gradient);
+    box-shadow: 
+        0 0 60px var(--primary-color),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.circle:nth-child(1) { animation-delay: 0s; }
+.circle:nth-child(3) { animation-delay: 1.3s; }
+.circle:nth-child(5) { animation-delay: 2.6s; }
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 60px var(--primary-color),
+            inset 0 0 20px rgba(255, 255, 255, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 80px var(--primary-color),
+            inset 0 0 30px rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+}
+
+.line {
+    width: 4px;
+    height: 150px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--primary-color) 30%, 
+        var(--primary-color) 70%, 
+        transparent);
+}
+
+/* Text content */
+.aboutdetails {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    max-width: 500px;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.aboutdetails > div {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.aboutdetails h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.aboutdetails h1::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 70%;
+    background: var(--gradient);
+    border-radius: 3px;
+}
+
+.aboutdetails ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.aboutdetails li {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(69, 193, 215, 0.3);
+    line-height: 1.5;
+}
+
+.aboutdetails span {
+    font-weight: 600;
+    color: white;
+    min-width: 140px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+/* Right side - Cards */
+.rightabout {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+
+@media (max-width: 1024px) {
+    #about {
+        flex-direction: column;
+        min-height: auto;
+        gap: 40px;
+    }
+    
+    .leftabout, .rightabout {
+        width: 100%;
+        min-height: auto;
+        padding: 40px 30px;
+    }
+    
+    .leftabout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    
+    .circle-line {
+        flex-direction: row;
+        gap: 60px; 
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+    
+    .line {
+        width: 60px; 
+        height: 4px; 
+    }
+    
+    .aboutdetails {
+        padding-top: 0;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .aboutdetails > div {
+        min-height: auto;
+        margin-bottom: 30px;
+    }
+    
+    .aboutdetails h1::before {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 5px;
+        top: auto;
+        bottom: -10px;
+    }
+    
+    .aboutdetails li {
+        padding-left: 0;
+        border-left: none;
+        padding-bottom: 8px;
+    }
+    
+    .aboutdetails span {
+        min-width: 100px;
+    }
+    
+    
+    .rightabout {
+        padding-top: 20px; 
+        gap: 30px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .circle-line {
+        gap: 40px; 
+    }
+    
+    .circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .line {
+        width: 40px; /* Shorter horizontal lines */
+    }
+    
+    .aboutdetails h1 {
+        font-size: 1.5rem;
+    }
+    
+    .aboutdetails li {
+        font-size: 0.95rem;
+    }
+    
+    .aboutdetails span {
+        min-width: 90px;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    /* FIX: Cards much closer on mobile */
+    .rightabout {
+        padding: 20px;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    #about {
+        gap: 30px;
+    }
+    
+    .leftabout, .rightabout {
+        padding: 20px 15px;
+    }
+    
+    .circle-line {
+        gap: 25px;
+    }
+    
+    .circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .line {
+        width: 25px;
+    }
+    
+    .aboutdetails {
+        gap: 40px;
+    }
+    
+    .aboutdetails h1 {
+        font-size: 1.3rem;
+    }
+    
+    .aboutdetails li {
+        font-size: 0.9rem;
+    }
+    
+ 
+    .rightabout {
+        padding: 15px 10px;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .circle {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .line {
+        height: 180px;
+    }
+    
+    .aboutdetails > div {
+        min-height: 140px;
+    }
 }

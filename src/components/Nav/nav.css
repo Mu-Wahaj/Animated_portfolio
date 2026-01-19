@@ -1,95 +1,147 @@
-nav{
+
+nav {
     width: 100%;
-    height: 80px;
+    height: var(--nav-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px;
     position: fixed;
     top: 0;
-    
+    background-color: rgba(0, 0, 0, 0.95); /* Semi-transparent */
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-nav ul a{
 
-
-    
+nav ul a {
     cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
-a:hover{
-color: rgb(217, 226, 226);
-border-bottom: 2px solid white;
-}
-.active{
 
-color: rgb(82, 85, 85);
-border-bottom: 2px solid linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
+a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
-ul{
+
+a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+ nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    color: rgb(220, 214, 214);
+    gap: 30px; /* Slightly larger gap */
+    color: var(--text-color);
     list-style: none;
-    font-size: 20px;
+    font-size: 18px; /* Slightly smaller */
+    font-weight: 500;
 }
+
 nav h1 {
-    font-size: 30px;
-    background: linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary-color), rgb(218, 218, 218));
     background-clip: text;
-    color: transparent; 
+    -webkit-background-clip: text;
+    color: transparent;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
-.hamburger{
-    display: flex;
+
+nav h1:hover {
+    transform: scale(1.05);
+}
+
+.hamburger {
+    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-gap: 8px;
-display: none;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
 }
-.ham{
-    width: 40px ;
-    height: 2px ;
-     background: linear-gradient(to right , rgb(109, 109, 130) ,rgb(218, 218, 218));
-         transition: all 0.5s ease-in-out;
 
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
-.mobilemenu{
- position: absolute;
- top: 80px;
- width: 100%;
- height: 100vh;
-right: 0;
-transform: translateX(100%);
-flex-direction: column;
-transition: all 0.5s ease-in-out;
-background-color: rgba(0, 0, 0, 0.353);
-backdrop-filter: blur(7px);
-gap: 40px;
 
+.ham {
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), rgb(218, 218, 218));
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-.activemobile{
-    transform: translateX(0%);
+
+.mobilemenu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-height));
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        background-color: rgb(0 0 0 / 66%);
+    backdrop-filter: blur(20px);
+    gap: 40px;
+    padding-top: 60px;
+    z-index: 999;
 }
-.activeham .ham:nth-child(1){
-    transform: rotate(45deg) ;
-    position: relative;
-    top: 8px;
+
+.activemobile {
+    transform: translateX(0);
 }
-.activeham .ham:nth-child(2){
+
+.activeham .ham:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.activeham .ham:nth-child(2) {
     opacity: 0;
+    transform: translateX(-20px);
 }
-.activeham .ham:nth-child(3){
-    transform: rotate(-45deg) ;
-    position: relative;
-    top: -12px;
+
+.activeham .ham:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
-    @media (max-width: 768px) {
-        .desktopmenu{
-            display: none;
-        }
-        .hamburger{
-            display: flex;
-        }
+
+@media (max-width: 768px) {
+    .desktopmenu {
+        display: none;
     }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    ul {
+        gap: 25px;
+        font-size: 16px;
+    }
+    
+    nav h1 {
+        font-size: 24px;
+    }
+}
+
+body.menu-open {
+    overflow: hidden;
+}

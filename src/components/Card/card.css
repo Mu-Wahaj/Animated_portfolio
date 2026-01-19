@@ -1,0 +1,184 @@
+.card {
+    width: 380px; /* Bigger width for better alignment */
+    height: 140px; /* Bigger height to match circle size */
+    background: rgba(20, 20, 20, 0.85);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 2px solid rgba(69, 193, 215, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(69, 193, 215, 0.1),
+        inset 0 0 20px rgba(69, 193, 215, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardAppear 0.8s ease-out forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.3s; }
+.card:nth-child(2) { animation-delay: 0.6s; }
+
+@keyframes cardAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        var(--primary-color), 
+        transparent);
+    z-index: -1;
+    border-radius: 17px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: var(--primary-color);
+    box-shadow: 
+        0 15px 40px rgba(69, 193, 215, 0.3),
+        0 0 50px rgba(69, 193, 215, 0.2),
+        inset 0 0 30px rgba(69, 193, 215, 0.1);
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.8rem; /* Bigger text to match scale */
+    font-weight: 700;
+    background: linear-gradient(to right, 
+        rgb(69, 193, 215), 
+        rgb(218, 218, 218));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(69, 193, 215, 0.3);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-title {
+    background: linear-gradient(to right, 
+        white, 
+        rgb(69, 193, 215));
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0 0 30px rgba(69, 193, 215, 0.5);
+}
+
+.hovercard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(69, 193, 215, 0.15), 
+        rgba(0, 0, 0, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+}
+
+.card:hover .hovercard {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(69, 193, 215, 0.5));
+    transition: all 0.4s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 25px rgba(69, 193, 215, 0.8));
+}
+
+/* Responsive cards */
+@media (max-width: 1024px) {
+    .card {
+        width: 340px;
+        height: 130px;
+    }
+    
+    .card-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 320px;
+        height: 120px;
+    }
+    
+    .card-title {
+        font-size: 1.4rem;
+    }
+    
+    .card-image {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 280px;
+        height: 100px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .card-image {
+        width: 60px;
+        height: 60px;
+    }
+}

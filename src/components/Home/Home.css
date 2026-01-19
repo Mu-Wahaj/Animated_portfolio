@@ -1,5 +1,139 @@
-#home{
-    width: 100%;
-    height: 100%;
+:root {
+    --nav-height: 80px;
+}
+
+#home {
+    display: flex;
     min-height: 100vh;
+    align-items: center;
+    padding-top: var(--nav-height, 80px);
+    box-sizing: border-box;
+}
+
+.lefthome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    padding: 2rem;
+    flex: 1;
+    text-align: left; /* Left align on desktop */
+}
+
+.righthome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+}
+
+.righthome img {
+    width: 100%;
+    max-width: 500px;
+    filter: drop-shadow(2px 2px 20px rgb(69, 193, 215));
+}
+
+.homedetails {
+    max-width: 600px;
+    width: 100%;
+}
+
+.line1 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.line2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, rgb(69, 193, 215), rgb(218, 218, 218));
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+}
+
+.line3 {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    min-height: 2.5em;
+    margin-bottom: 1.5rem;
+}
+
+.homedetails button {
+    padding: 0.8rem 2rem;
+    color: black;
+    background: rgb(69, 193, 215);
+    border: 2px solid rgb(69, 193, 215);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 600;
+}
+
+.homedetails button:hover {
+    background: transparent;
+    transform: scale(1.05);
+    color: white;
+}
+
+/* Tablet and below */
+@media (max-width: 992px) {
+    #home {
+        flex-direction: column-reverse;
+        padding-top: var(--nav-height, 80px);
+        gap: 2rem;
+        min-height: auto;
+    }
+    
+    .lefthome, .righthome {
+        padding: 1rem;
+        height: auto;
+    }
+    
+    .lefthome {
+        text-align: center; /* Center on mobile */
+    }
+    
+    .righthome img {
+        max-width: 400px;
+    }
+    
+    .homedetails {
+        padding: 0 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    #home {
+        padding-top: var(--nav-height, 80px);
+        gap: 1rem;
+    }
+    
+    .lefthome, .righthome {
+        padding: 0.5rem;
+    }
+    
+    .righthome img {
+        max-width: 280px;
+    }
+    
+    .line2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+    
+    .line3 {
+        min-height: 2em;
+        font-size: clamp(1rem, 4vw, 1.3rem);
+    }
+    
+    .homedetails button {
+        padding: 0.7rem 1.8rem;
+        font-size: 1rem;
+
+    }
 }
