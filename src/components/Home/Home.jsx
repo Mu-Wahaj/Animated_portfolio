@@ -78,7 +78,9 @@ function Home() {
               delaySpeed={1000}
             />
           </div>
-          <button>HIRE ME</button>
+          <a href="#contact">
+  <button>HIRE ME</button>
+</a>
         </div>
       </div>
       <div className="righthome">
