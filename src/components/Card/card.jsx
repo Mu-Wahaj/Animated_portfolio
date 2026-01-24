@@ -1,9 +1,9 @@
 import React from 'react'
 import './card.css'
 
-function Card({ title, image }) {
+function Card({ title, image, variant = 'default' }) {
   return (
-    <div className="card">
+    <div className={`card ${variant}-card`}>
       <div className="card-content">
         <h1 className="card-title">{title}</h1>
         <div className="hovercard">

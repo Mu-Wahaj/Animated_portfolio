@@ -17,3 +17,10 @@
 body{
   background-color: black;
 }
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+scrollbar-width: none;
+
+}
