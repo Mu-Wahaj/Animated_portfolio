@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Card/Card'
+import Card from '../Card/card'
 import mern from '../../assets/st.png'
 import webdev from '../../assets/lang.png'
 import webdes from '../../assets/ds.png'

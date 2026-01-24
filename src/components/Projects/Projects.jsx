@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Card from '../Card/Card';
+import Card from '../Card/card';
 import './Projects.css';
 import project1 from '../../assets/va.png';
 import project2 from '../../assets/fw.png';
