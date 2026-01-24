@@ -11,8 +11,7 @@
     display: flex;
     padding-top: var(--nav-height);
     box-sizing: border-box;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(10, 10, 30, 0.98));
-    position: relative;
+   position: relative;
     overflow: hidden;
 }
 
@@ -90,7 +89,6 @@
         transparent);
 }
 
-/* Text content */
 .aboutdetails {
     display: flex;
     flex-direction: column;
