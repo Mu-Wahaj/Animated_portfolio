@@ -1,7 +1,7 @@
 import React from 'react'
 import './card.css'
 
-function Card({ title, image, variant = 'default' }) {
+function card({ title, image, variant = 'default' }) {
   return (
     <div className={`card ${variant}-card`}>
       <div className="card-content">
@@ -19,4 +19,4 @@ function Card({ title, image, variant = 'default' }) {
   )
 }
 
-export default Card
+export default card
